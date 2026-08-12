@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-08-12 10:42:12",
+  "ip": "192.168.1.18",
+  "method": "GET",
+  "endpoint": "/api/login",
+  "status_code": 503,
+  "response_time": 322,
+  "anomaly": true,
+  "reasons": ["server_error"]
+}

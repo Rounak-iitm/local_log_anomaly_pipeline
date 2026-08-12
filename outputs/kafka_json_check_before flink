@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-08-12 10:35:01",
+  "ip": "192.168.1.12",
+  "method": "GET",
+  "endpoint": "/api/products",
+  "status_code": 200,
+  "response_time": 173
+}

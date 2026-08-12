@@ -1,0 +1,42 @@
+step 1 
+    pip install -r requirements.txt
+    docker compose up -d 
+
+#create_Topic
+
+docker exec log-anomaly-kafka \
+  /opt/kafka/bin/kafka-topics.sh \
+  --create \
+  --topic server-logs \
+  --bootstrap-server localhost:9092 \
+  --partitions 3 \
+  --replication-factor 1
+
+#anomalies
+docker exec log-anomaly-kafka \
+  /opt/kafka/bin/kafka-topics.sh \
+  --create \
+  --topic anomalies \
+  --bootstrap-server localhost:9092 \
+  --partitions 3 \
+  --replication-factor 1
+
+#verify
+docker exec log-anomaly-kafka \
+  /opt/kafka/bin/kafka-topics.sh \
+  --list \
+  --bootstrap-server localhost:9092
+
+# test the kafaka before flink
+docker exec -it log-anomaly-kafka \
+  /opt/kafka/bin/kafka-console-consumer.sh \
+  --bootstrap-server localhost:9092 \
+  --topic server-logs \
+  --from-beginning
+
+step 2 
+    #Terminal 1 — Kafka
+     docker compose up -d
+    #Terminal 2 — Producer
+      python producer.py
+      
